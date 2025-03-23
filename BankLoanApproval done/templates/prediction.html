@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block title %}SecureBank - Loan Prediction{% endblock %}
+
+{% block additional_styles %}
+.prediction-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.submit-button {
+    background: var(--accent-color);
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    width: 100%;
+    transition: background 0.3s ease;
+}
+
+.submit-button:hover {
+    background: var(--secondary-color);
+}
+
+.result {
+    margin-top: 2rem;
+    padding: 1rem;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.approved {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.rejected {
+    background: #ffebee;
+    color: #c62828;
+}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="prediction-container">
+        <h1>Loan Approval Prediction</h1>
+        <p>Fill in your details below to check your loan eligibility</p>
+        
+        {% if prediction_text %}
+        <div class="result {% if 'Approved' in prediction_text %}approved{% else %}rejected{% endif %}">
+            {{ prediction_text }}
+        </div>
+        {% endif %}
+
+        <form action="/predict" method="POST">
+            <div class="form-group">
+                <label for="Age">Age</label>
+                <input type="number" id="Age" name="Age" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="Income">Annual Income</label>
+                <input type="number" id="Income" name="Income" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="Family">Family Members</label>
+                <input type="number" id="Family" name="Family" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="CCAvg">Credit Card Average</label>
+                <input type="number" id="CCAvg" name="CCAvg" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="Education">Education Level</label>
+                <input type="number" id="Education" name="Education" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="Mortgage">Mortgage</label>
+                <input type="number" id="Mortgage" name="Mortgage" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="Securities">Securities Account</label>
+                <input type="number" id="Securities" name="Securities" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="CD_Account">CD Account</label>
+                <input type="number" id="CD_Account" name="CD_Account" required>
+            </div>
+            
+            <button type="submit" class="submit-button">Check Eligibility</button>
+        </form>
+    </div>
+</div>
+{% endblock %} 

@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block title %}SecureBank - About Us{% endblock %}
+
+{% block additional_styles %}
+.about-hero {
+    background-color: var(--light-bg);
+    padding: 4rem 2rem;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin: 4rem 0;
+}
+
+.about-image {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+}
+
+.values {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin: 4rem 0;
+}
+
+.value-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.team-section {
+    text-align: center;
+    margin: 4rem 0;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.team-member {
+    text-align: center;
+}
+
+.team-member img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+{% endblock %}
+
+{% block content %}
+<section class="about-hero">
+    <div class="container">
+        <h1>About SecureBank</h1>
+        <p>Leading the way in innovative banking solutions</p>
+    </div>
+</section>
+
+<div class="container">
+    <div class="about-content">
+        <div class="about-text">
+            <h2>Our Story</h2>
+            <p>Founded in 2024, SecureBank has been at the forefront of digital banking innovation. We combine cutting-edge technology with traditional banking values to provide our customers with the best financial services possible.</p>
+            <p>Our AI-powered loan approval system represents our commitment to making banking faster, more accessible, and more reliable for everyone.</p>
+        </div>
+        <div class="about-image">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-lxc9X1wLJxPlumfvmy2YVHaVbEbZc9gDv0ElxHS59vOLvzl2uFZgvsEHCNz6sqPC-7w&usqp=CAU" alt="SecureBank Building">
+        </div>
+    </div>
+
+    <section class="values">
+        <div class="value-card">
+            <h3>Innovation</h3>
+            <p>Embracing new technologies to improve banking experience</p>
+        </div>
+        <div class="value-card">
+            <h3>Security</h3>
+            <p>Protecting your financial data with advanced security measures</p>
+        </div>
+        <div class="value-card">
+            <h3>Transparency</h3>
+            <p>Clear and honest communication in all our services</p>
+        </div>
+        <div class="value-card">
+            <h3>Customer First</h3>
+            <p>Your success is our priority</p>
+        </div>
+    </section>
+</div>
+{% endblock %} 

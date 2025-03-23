@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Loan Approval Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background: #2575fc;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: #6a11cb;
+        }
+        #result {
+            margin-bottom: 20px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid #ffffff;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffffcc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bank Loan Approval Prediction</h1>
+        {% if prediction_text %}
+        <div id="result" style="margin-bottom: 20px; font-weight: bold;">
+            {{ prediction_text }}
+        </div>
+        {% endif %}
+        <form id="loanForm" action="/predict" method="POST">
+            <input type="number" id="Age" name="Age" placeholder="Age" required>
+            <input type="number" id="Income" name="Income" placeholder="Income" required>
+            <input type="number" id="Family" name="Family" placeholder="Family" required>
+            <input type="number" id="CCAvg" name="CCAvg" placeholder="CCAvg" required>
+            <input type="number" id="Education" name="Education" placeholder="Education" required>
+            <input type="number" id="Mortgage" name="Mortgage" placeholder="Mortgage" required>
+            <input type="number" id="Securities_Account" name="Securities" placeholder="Securities Account" required>
+            <input type="number" id="CD_Account" name="CD_Account" placeholder="CD Account" required>
+            <button type="submit" >Predict</button>
+        </form>
+        <div id="result" style="margin-top: 20px;"></div>
+    </div>
+    <!--<script>
+        async function submitForm() {
+            const form = document.getElementById('loanForm');
+            const data = {
+                Age: parseFloat(form.Age.value),
+                Income: parseFloat(form.Income.value),
+                Family: parseFloat(form.Family.value),
+                CCAvg: parseFloat(form.CCAvg.value),
+                Education: parseFloat(form.Education.value),
+                Mortgage: parseFloat(form.Mortgage.value),
+                Securities_Account: parseFloat(form.Securities_Account.value),
+                CD_Account: parseFloat(form.CD_Account.value)
+            };
+
+            const response = await fetch('/predict', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+
+            const resultDiv = document.getElementById('result');
+            if (response.ok) {
+                const result = await response.json();
+                resultDiv.textContent = `Prediction: ${result.approval_prediction}`;
+            } else {
+                const error = await response.json();
+                resultDiv.textContent = `Error: ${error.error}`;
+            }
+        }
+    </script>-->
+</body>
+</html>
